@@ -1,0 +1,90 @@
+
+    <script
+    type="text/javascript"
+    src="/assets/js/jquery.simplyscroll.js"
+  ></script>
+
+  <script type="text/javascript">
+    function getUrlVars() {
+      var vars = [],
+        hash;
+      var hashes = window.location.href
+        .slice(window.location.href.indexOf("?") + 1)
+        .split("&");
+      for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split("=");
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+      }
+      return vars;
+    }
+
+    $(".horizontal-scroller").simplyScroll();
+
+    $(window).scroll(function (event) {
+      $("#section-01").css({
+        "background-position":
+          "center " + (220 - $(window).scrollTop() / 4) + "px",
+      });
+    });
+
+    var ref = getUrlVars()["ref"];
+
+    if (ref) {
+      $("a").each(function (index, link) {
+        if (link.href.indexOf("action=") > 0) {
+          link.href = link.href + "&ref=" + ref;
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      $(window).load(function () {
+        var hash = location.hash.replace("#", "");
+        if (hash != "") {
+          go_el("#" + hash);
+        }
+      });
+
+      try {
+        const agreed = localStorage.getItem("legal_agreed");
+        if (!agreed) {
+          showLegal();
+        }
+      } catch (e) {
+        showLegal();
+      }
+    });
+
+    function showLegal() {
+      $("#privacy > .container").removeClass("hide");
+    }
+
+    function agree() {
+      $("#privacy").hide();
+      localStorage.setItem("legal_agreed", true);
+    }
+
+    function change_plan(elem, period) {
+      $(".plans-period").hide();
+      $(".btn-plan").removeClass("btn-plan-selected");
+      $(elem).addClass("btn-plan-selected");
+      $(".plans-" + period).show();
+    }
+    function go(){
+      go_el("#time");
+      $("[name=name]").focus()
+    }
+    function go_el(el) {
+      $("html, body").animate({ scrollTop: $(el).offset().top - 120 }, 400);
+    }
+    function open_link(link) {
+      window.open(link);
+    }
+  </script>
+  <!-- Google Tag Manager (noscript) -->
+
+ 
+  <!-- End Google Tag Manager (noscript) -->
+</body>
+</html>

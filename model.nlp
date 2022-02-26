@@ -1,0 +1,387 @@
+{
+  "settings": {
+    "languages": [
+      "pt"
+    ],
+    "forceNER": true,
+    "nlu": {
+      "log": false
+    },
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager",
+      "log": false
+    },
+    "locales": [
+      "pt"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "pt": {
+        "settings": {
+          "locale": "pt",
+          "trainByDomain": false,
+          "tag": "domain-manager-pt",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "ok": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "cert": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "bem,tud": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "blz": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "sim": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "gost": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "ativ": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "termin": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "acab": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "mais,sab": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "quer": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          },
+          "aceit": {
+            "intent": "CONFIRMACAO",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "CONFIRMACAO": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "ok",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "certo",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "tudo bem",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "blz",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "sim",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "gostaria",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "ativar",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "terminei",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "acabei",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "saber mais",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "quero",
+            "intent": "CONFIRMACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "aceito",
+            "intent": "CONFIRMACAO"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "pt",
+              "tag": "nlu-pt",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "ok": 1,
+              "cert": 1,
+              "tud": 1,
+              "bem": 1,
+              "blz": 1,
+              "sim": 1,
+              "gost": 1,
+              "ativ": 1,
+              "termin": 1,
+              "acab": 1,
+              "sab": 1,
+              "mais": 1,
+              "quer": 1,
+              "aceit": 1
+            },
+            "intents": {
+              "CONFIRMACAO": 1
+            },
+            "intentFeatures": {
+              "CONFIRMACAO": {
+                "ok": 1,
+                "cert": 1,
+                "tud": 1,
+                "bem": 1,
+                "blz": 1,
+                "sim": 1,
+                "gost": 1,
+                "ativ": 1,
+                "termin": 1,
+                "acab": 1,
+                "sab": 1,
+                "mais": 1,
+                "quer": 1,
+                "aceit": 1
+              }
+            },
+            "featuresToIntent": {
+              "ok": [
+                "CONFIRMACAO"
+              ],
+              "cert": [
+                "CONFIRMACAO"
+              ],
+              "tud": [
+                "CONFIRMACAO"
+              ],
+              "bem": [
+                "CONFIRMACAO"
+              ],
+              "blz": [
+                "CONFIRMACAO"
+              ],
+              "sim": [
+                "CONFIRMACAO"
+              ],
+              "gost": [
+                "CONFIRMACAO"
+              ],
+              "ativ": [
+                "CONFIRMACAO"
+              ],
+              "termin": [
+                "CONFIRMACAO"
+              ],
+              "acab": [
+                "CONFIRMACAO"
+              ],
+              "sab": [
+                "CONFIRMACAO"
+              ],
+              "mais": [
+                "CONFIRMACAO"
+              ],
+              "quer": [
+                "CONFIRMACAO"
+              ],
+              "aceit": [
+                "CONFIRMACAO"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "pt",
+                "tag": "nlu-pt",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true
+              },
+              "features": [
+                "ok",
+                "cert",
+                "tud",
+                "bem",
+                "blz",
+                "sim",
+                "gost",
+                "ativ",
+                "termin",
+                "acab",
+                "sab",
+                "mais",
+                "quer",
+                "aceit"
+              ],
+              "intents": [
+                "CONFIRMACAO"
+              ],
+              "perceptrons": [
+                [
+                  2.0614326000213623,
+                  2.3031744956970215,
+                  1.165486454963684,
+                  1.165486454963684,
+                  2.277491807937622,
+                  2.2526373863220215,
+                  2.227207660675049,
+                  2.2012550830841064,
+                  2.1748292446136475,
+                  2.147977352142334,
+                  1.1446024179458618,
+                  1.1446024179458618,
+                  2.1135942935943604,
+                  2.08547043800354,
+                  12.08043117376406
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "pt",
+        "ok"
+      ],
+      [
+        "pt",
+        "certo"
+      ],
+      [
+        "pt",
+        "tudo bem"
+      ],
+      [
+        "pt",
+        "blz"
+      ],
+      [
+        "pt",
+        "sim"
+      ],
+      [
+        "pt",
+        "gostaria"
+      ],
+      [
+        "pt",
+        "ativar"
+      ],
+      [
+        "pt",
+        "terminei"
+      ],
+      [
+        "pt",
+        "acabei"
+      ],
+      [
+        "pt",
+        "saber mais"
+      ],
+      [
+        "pt",
+        "quero"
+      ],
+      [
+        "pt",
+        "aceito"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "pt": {
+        "CONFIRMACAO": [
+          {
+            "answer": {
+              "resposta": "value",
+              "value": "text"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

@@ -1,0 +1,136 @@
+
+        <div class="fb-comments-section" >
+         
+            <%  var count = 0
+                if(comments.length > 0){ %>
+
+                    <h3 class="load"><span class="total-comments"><%-total_comments %></span> Pessoas comentaram</h3>
+
+
+                    <span class="typing" style="display: none;">Alguem está escrevendo um comentario <span id="dots"></span></span>
+                    <div class="socialproof">
+                        </div>
+
+                <% comments.forEach(function(comment, index) {
+                   
+                    
+                    %>
+                    <div class="fb-comments" >
+
+                        <% if (comment.responses.length > 0) { %>
+                            <span class="line"></span>
+                            <% } %>
+
+                        
+                        <div class="user">
+                           
+                            <img
+                            class="lozad" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/faces/<%-comment.name.normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .replace(/\s/g, "").toLowerCase()%>.webp">
+                                                </div>
+                       
+            
+                        <div class="comments_">
+                            <div class="comments load">
+                       
+                                <span class="comment_name "><%-comment.name%></span>
+                                <span class="comment_text "><%-comment.comment%></span>
+                                <% if(comment.likes > 0){ %>
+                                    <div class="reaction load">
+                                        <%
+                                         var rand = Math.floor(Math.random() * 4) + 1 
+                                        if(rand > 0){ %>
+                                     <img  class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/haha.svg" height="16px" width="16px" alt="">
+                                            <% } if (rand > 1){ %>
+                                    <img class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/amei.svg" height="16px" width="16px" alt="">
+                                        <% }if (rand > 2){ %>
+                                     <img class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/like.svg" height="16px" width="16px" alt="">
+                                     <% }if (rand > 3){ %>
+                                     <img class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/uau.svg" height="16px" width="16px" alt="">
+                                         <% } %>
+                                    <span id="likes"><%-comment.likes%></span>
+                                    </div>
+                                <% } %>
+                                
+                            </div>
+                           
+                        <div class="comments_opt">
+                            <span class="time"></span>
+                            <span class="curtir">· Curtir</span>
+                            <span class="responder">· Responder</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                        <%
+                        count++
+                        
+                        if(comment.responses.length > 0){ %>
+                            <div id="response">
+                            <% comment.responses.forEach(function(response, index) { %>
+                                <div class="fb-comments" >
+
+                            <span class="line-curved"></span>
+                            <% if (index < comment.responses.length - 1) { %>
+                            <span class="line-curved-line"></span>
+                            <% } %>
+                                    <div class="user">
+                                        <img alt="face"
+                                        class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/faces/<%-response.name.normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s/g, "").toLowerCase()%>.webp">
+                                    </div>
+                        
+                                    <div class="comments_">
+                                        <div class="comments load">
+                                            <span class="comment_name"><%-response.name%></span>
+                                            <span class="comment_text"><%-response.comment%></span>
+                                            <% if(response.likes > 0){ %>
+                                    <div class="reaction load">
+                                        <%
+                                         var rand = Math.floor(Math.random() * 3) + 1 
+                                        if(rand > 0){ %>
+                                     <img class="lozad" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/haha.svg" height="16px" width="16px" alt="">
+                                            <% } if (rand > 1){ %>
+                                    <img class="lozad"   src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/amei.svg" height="16px" width="16px" alt="">
+                                        <% }if (rand > 2){ %>
+                                     <img class="lozad"   src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/like.svg" height="16px" width="16px" alt="">
+                                     <% }if (rand > 3){ %>
+                                     <img class="lozad"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" data-src="./assets/images/emoji/uau.svg" height="16px" width="16px" alt="">
+                                         <% } %>
+                                    <span id="likes"><%-response.likes%></span>
+                                    </div>
+                                <% } %>
+                                        </div>
+
+
+                                        <% if (typeof response.pic != "undefined" && response.pic.length > 0) { %>
+                                            <img class="lozad fb-image"  src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E" 
+                                            data-src="./assets/images/<%-response.pic%>"  alt="face">
+                                    
+
+                                            <% }%>
+                                    <div class="comments_opt">
+                                        <span class="curtir">Curtir</span>
+                                        <span class="responder">· Responder</span>
+                                    </div>
+                                    </div>
+                        
+                        
+                                </div>
+                                <%  count++ }); %>
+                            </div>
+                                <% } else{ %>  
+                                  
+                                <% } %>
+                          
+              
+                    <% }); %>
+            <% } else{ %>  
+              
+            <% } %>
+
+<span class="btn fb-buttom">Carregar mais Comentarios ...</span>
+
+        </div>

@@ -1,0 +1,18 @@
+
+    [{
+      "question": "Qual destes refrigenrantes você mais gosta?",
+      "answer": ["Coca-Cola", "Fanta"]
+    },
+    {
+      "question": "Pagando o mesmo valor você prefere comprar refrigerantes ...",
+      "answer": ["Em Temperatura ambiente", "Gelado"]
+    },
+    {
+      "question": "Qual destas cervejas você tem mais afinidade?",
+      "answer": ["Skol", "Brahma", "Sol"]
+    },
+    {
+      "question": "Você já comeu o Salgadinho Rufles",
+      "answer": ["Sim", "Não", "Não Conheço"]
+    }]
+

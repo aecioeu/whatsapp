@@ -1,0 +1,74 @@
+<%- include('components/header'); %>
+
+
+    <body class="gradient">
+        <span class="message" id="message">Você está prestes a concluir a <span class="city" id="city">Última etapa</span>
+            para receber sua transfência via PIX. Boa Sorte !</span>
+        <div id="site">
+
+
+            <div class="section">
+
+  
+
+
+                <div class="mt-1">
+                    <img class="lazy load load-rouded logo" height="127px;" width="315px"
+                        src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 200 150'%2F%3E"
+                        data-src="/assets/images/logo.webp" alt="Alternative text to describe image.">
+
+
+                </div>
+
+                <h1><span class="load titulo font26 ">
+                   <%-socialproof.name%>, compartilhe <strong style="color: #20bf55;">até completar a <b>Barra Verde</b> 👇</strong>
+                </h1>
+                <p>
+                    <span class="sub-texto load font15">Tempo Restante: <span id="time">05:00</span></span>
+                </p>
+            </div>
+
+            <div class="section load" style="min-height: 50%;">
+                
+                  <div class="progress-bar load" id="progress">
+                    <span class="progress-bar-fill" id="progress-bar" style="width: 0%;">0%</span>
+                </div>
+             
+
+            </div>
+
+            <div class="section load" style="min-height: 50%;">
+                <br>
+            
+
+                <form action id="formulario">
+
+                    <input type="hidden" class="uuid" name="uuid" value="<%= uuid %>">
+                   
+                    <p class="pulse">
+                        <input class="btn btn-purple shake" type="submit" name="submit" value="Compartilhar" />
+                    </p>
+                </form>
+               
+                <br><br>
+            </div>
+           
+
+
+        
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+        <%- include('components/footer'); %>
+            
+            <script> <%-include('assets/output/js/compratilhe')%>
+         
+            </script>
+    </body>
+
+
+
+
+    </html>

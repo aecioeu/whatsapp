@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%- include ("./partials/head", {title:"your_title"}) -%>
+  </head>
+  <body>
+    <%- include ("./partials/header", {menu: false}) -%>
+
+    <section id="section-01">
+      <div class="container">
+        <div
+          id="section-01-content"
+          class="
+            col-xxl-6
+            offset-xxl-3
+            col-xl-8
+            offset-xl-2
+            col-md-8
+            offset-md-2
+            col-12
+          "
+        >
+          <h6>Você tem <span id="time">05:00</span> para pegar seus <br>  Números da sorte Grátis e</h6>
+
+          <h1 class="gradient-text">Trabalhe respondendo pesquisas para Grandes Marcas </h1>
+
+          <p>
+            <form action id="formulario">
+
+              <input type="hidden" name="prize_uuid" value="">
+              <input type="hidden" name="uuid" value="<%= uudi %>">
+
+              <p>
+               
+                <input type="text" name="name" placeholder="Seu Nome" />
+              </p>
+              <p>
+                
+                <input type="text" name="whatsapp" placeholder="Seu Whatsapp" />
+              </p>
+              <p style="margin-bottom: 0; font-size: 12px;">
+                👋 Você vai receber agora seus   números da sorte<br><strong>direto no seu whatsapp.</strong>
+              </p>
+              <p>
+                <input class="btn btn-purple" type="submit" name="submit" value="Continuar" />
+              </p>
+            </form>
+            <!--<a
+              href="https://editor.keepo.io/#/?action=start"
+              class="btn btn-purple"
+              >Crie o seu minisite grátis</a
+            >-->
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="home-phones" class="container d-block d-md-none">
+      <div class="row">
+        <p class="col-12">
+          <img
+            src="/assets/img/bg_phones_mobile.png"
+            
+            alt="Keepo"
+          />
+        </p>
+      </div>
+    </section>
+
+    <section id="section-about" class="container">
+      <div class="row section-about-01">
+        <div class="col-md-6 col-12">
+          <h6></h6>
+          <h3>Bem vindos ao Sortemax  </h3>
+          <p>
+            Somos um site que sorteia prêmios ao vivo pelo instagram, para participar é so se <a href="#cadastro" onclick="go()">cadastrar</a> é rapído e grátis.
+          </p>
+        </div>
+        <p class="col-md-6 col-12">
+          <img
+            src="/assets/img/wow.webp"
+            alt
+            style="width: 424px; max-width: 100%"
+          />
+        </p>
+      </div>
+      <div class="row section-about-02">
+        <p class="col-md-6 col-12">
+          <img
+            src="/assets/img/about_image_02.png"
+            alt
+            style="width: 413px; max-width: 100%"
+          />
+        </p>
+        <div class="col-md-6 col-12 section-about-01">
+          <h6>Atenção </h6>
+          <h3>Depois de receber seus numeros no whatsapp, siga nosso perfil <a href="<%-config.site %>/instagram"><%- config.instagram%></a></h3>
+          <p>
+            O vencedor, não pode dar bobeira, para receber<br> seu 🎁 prêmio tem que estar seguindo a gente.
+          </p>
+        </div>
+      </div>
+
+      <div class="row section-about-03">
+        <div class="col-md-6 col-12">
+          <h6></h6>
+          <h3>O sorteio é dia <%-new Date().toLocaleDateString()%>, ao vivo pelo instagram.</h3>
+          <p>
+            <u>Marque</u> esta data no seu calendario,<br> afinal você ser o sortudo que vai ganhar <br>.</b>
+          </p>
+        </div>
+        <p class="col-md-6 col-12">
+          <img
+            src="/assets/img/about_image.png"
+            alt
+            style="width: 424px; max-width: 100%"
+          />
+        </p>
+      </div>
+  
+    </section>
+
+
+
+
+    <section id="section-made" class="container">
+      <div class="row">
+        <h5 class="col-12">
+          Faça como as <span>+<%-config.peoples[0]%> pessoas que já estão participando </span> 
+          acredite na sua sorte!
+          <span>Participe, é Grátis!</span>
+        </h5>
+      </div>
+    </section>
+
+    <section class="horizontal-scroller">
+  
+      <p
+      class="user-profile"
+      onclick="open_link('https://keepo.io/andrebuarque/')"
+    >
+      <img src="/assets/img/402-destaque.png" alt />Pedro Buarque
+    </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/andrebuarque/')"
+      >
+        <img src="/assets/img/andre-destaque.png" alt />André Buarque
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/gabrielsilva/')"
+      >
+        <img src="/assets/img/gabriel-destaque.png" alt />Gabriel Silva
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/cookiestories/')"
+      >
+        <img src="/assets/img/cokie-destaque.png" alt />Cookie Stories
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/andreyknabbenn/')"
+      >
+        <img src="/assets/img/andrey-destaque.png" alt />Andrey Knabben
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/omarcosalmeida/')"
+      >
+        <img src="/assets/img/marcos-destaque.png" alt />Marcos Almeida
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/murilloleal/')"
+      >
+        <img src="/assets/img/murillo-destaque.png" alt />Murillo Leal
+      </p>
+      <p class="user-profile" onclick="open_link('https://keepo.io/nosemum/')">
+        <img src="/assets/img/nosemum-destaque.png" alt />Nós em Um
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/raissabulhoes/')"
+      >
+        <img src="/assets/img/raissa-destaque.png" alt />Raíssa Bulhões
+      </p>
+      <p
+        class="user-profile"
+        onclick="open_link('https://keepo.io/zedoradiohome/')"
+      >
+        <img src="/assets/img/ze-destaque.png" alt />Zé do Rádio Home
+      </p>
+    </section>
+
+
+
+    
+
+
+    <section id="comments" class="container">
+      <div class="row">
+        <h4 class="col-12">Olha só quem já ta participando.</h4>
+        <div class="comment col-lg-4 offset-lg-0 col-md-10 offset-md-1 col-12">
+          <p>
+            "Eu me interessei porque era grátis e eu tinha a chance de ganhar "
+          </p>
+          <p>
+            <img src="/assets/img/starts.png" alt />
+          </p>
+          <p class="comment-author">
+            <b>Filipe Siqueira</b>
+          </p>
+        </div>
+        <div class="comment col-lg-4 offset-lg-0 col-md-10 offset-md-1 col-12">
+          <p>
+            "Bom, não é todo dia que você recebe   Números da sorte Grátis para participar."
+          </p>
+          <p>
+            <img src="/assets/img/starts.png" alt />
+          </p>
+          <p class="comment-author">
+            <b>Andrey Knabbenn</b>
+          </p>
+        </div>
+        <div class="comment col-lg-4 offset-lg-0 col-md-10 offset-md-1 col-12">
+          <p>
+            "Assim que eu me cadastrei já recebi meus numeros no Zap."
+          </p>
+          <p>
+            <img src="/assets/img/starts.png" alt />
+          </p>
+          <p class="comment-author">
+            <b>Gustavo Virgilio</b>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <p class="col-xl-2 col-lg-3 col-md-1 col-12 footer-logo">
+            <picture>
+              <source
+                srcset="/assets/img/logo_keepo_footer_xs.svg"
+                media="(max-width: 767px)"
+              />
+              <source
+                srcset="/assets/img/logo_keepo_footer_md.svg"
+                media="(max-width: 991px)"
+              />
+              <img src="/assets/img/logo_keepo_footer.svg" alt="Flowers" />
+            </picture>
+          </p>
+          <p
+            class="
+              col-xl-2 col-lg-3 col-md-3 col-12
+              d-none d-md-block
+              footer-slogan
+            "
+          >
+            Minisite do seu tipo.
+          </p>
+          <ul
+            class="
+              footer-nav
+              col-xl-2
+              offset-xxl-4 offset-xl-3
+              col-lg-3
+              offset-lg-0
+              col-md-3
+              offset-md-1
+              col-12
+            "
+          >
+            <li>
+              <a href="" data-bs-toggle="modal" data-bs-target="#faleConosco"
+                >Fale Conosco</a
+              >
+            </li>
+            <li>
+              <a href="https://editor.keepo.io/#/legal">Termos e Privacidade</a>
+            </li>
+            <!-- <li><a href="https://blog.keepo.io" target="_blank">Blog</a></li> -->
+          </ul>
+          <p class="col-xxl-2 col-lg-3 col-md-4 col-12 footer-social">
+            <a href="https://www.linkedin.com/company/keepo-io/"
+              ><img src="/assets/img/linkedin.svg" alt
+            /></a>
+            <a href="https://www.instagram.com/keepo.io/" target="_blank"
+              ><img src="/assets/img/instagram.svg" alt
+            /></a>
+            <a href="https://www.facebook.com/keepo.io" target="_blank"
+              ><img src="/assets/img/facebook.svg" alt
+            /></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <%-include('partials/aviso.ejs')%>
+    <script>
+      $(function () {
+
+        function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 900);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+
+          $('form').on('submit', function (e) {
+
+              e.preventDefault();
+
+              $.ajax({
+                  type: 'post',
+                  url: '/lead',
+                  data: $('form').serialize(),
+                  success: function (data) {
+                      // alert('form was submitted');
+                  }
+              });
+
+              $('#formulario').hide().empty().html('<p>Solicite os numeros no Whatsapp</p>')
+               $('#formulario').fadeIn() 
+            
+
+          });
+
+      });
+  </script>
+    <%- include ("./partials/footer") -%>
+  </body>
+</html>

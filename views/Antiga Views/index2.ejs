@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+        $(function () {
+
+            $('form').on('submit', function (e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    url: '/lead',
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        // alert('form was submitted');
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+   
+    <form>
+        <input name="prize_uuid" value="<%= prize_uuid %>"><br>
+        <input name="uuid" value="<%= uudi %>"><br>
+        <input name="name" value="Aécio Oliveira"><br>
+        <input name="whatsapp" value="37988555554"><br>
+        <input name="submit" type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

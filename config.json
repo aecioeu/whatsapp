@@ -1,0 +1,98 @@
+{
+  "root":"https://app.kinghost.net",
+  "questionValue" : 3.79,
+  "withdraw": 200,
+  "videoId": 515963933,
+  "empresaName": "PNG Pesquisas",
+  "ProductName": "teste",
+  "headline": "Trabalhe pelo whatsapp e receba PIX de até <strong>R$236 por dia</strong> <b>respondendo pesquisas</b> para grandes marcas!",
+  "headline2": "Preencha agora, para saber mais.<br>Poucas Vagas.",
+  "DelayBuyButton": "3000",
+  "facebookPixel": "",
+  "color": "#000000",
+  "buyLink": "",
+  "total_comments": 125,
+  "comments": [
+    {
+      "name": "Maria",
+      "comment": "Já estou respondendo as pesquisas no Whatsapp",
+      "likes": 20,
+      "responses": []
+    },
+    {
+      "name": "Joana Siqueira",
+      "comment": "Alguem sabe como funciona ?",
+      "responses": [
+        {
+          "name": "Maria das Neves",
+          "comment": "<b>@Joana Siqueira</b>, você se cadastra ai e recebe no whatsapp pesquisas para responder sobre os produtos de grandes marcas como COCA-COLA, OMO etc ... no final vc solicita a transferência e recebe seu pagamento via PIX",
+          "likes": 27
+        },
+        {
+          "name": "Roberta",
+          "comment": "Isso mesmo gente, eu me cadastrei ontem e já recebi 2 vezes! To amando!! 🤩",
+          "pic": "prof/pix.jpg"
+        }
+        
+      ]
+    },
+    {
+      "name": "Joana",
+      "comment": "Eu estou meio reciosa, alguem me ajuda ?",
+      "likes": 20,
+      "responses": [
+        {
+          "name": "Marilia",
+          "comment": "Eu queria saber se funciona tambem ? alguem ?"
+        },
+        {
+          "name": "Dinora",
+          "comment": "Pessoal, fuinciona sim, eu estou fazendo !! Eu consegui receber ontem, R$187 pode fazer tranquila, recebe na hora por PIX",
+          "likes": 36,
+          "pic": "prof/pix2.jpg"
+        },
+        {
+          "name": "Josina",
+          "comment": "Eu vou me cadastrar, antes que as vagas terminem",
+          "likes": 18
+        },
+        { "name": "Marta", "comment": "obrigado por existirem, me salvou aqui! tava precisando de um dinheiro extra", "likes": 2 }
+      ]
+    },
+    {
+      "name": "Ilma",
+      "comment": "Só queria ter descobero isso antes",
+      "likes": 43,
+      "responses": [
+        { "name": "Ludimila", "comment": "Acabei de fazer de me cadastrar" }
+      ]
+    },
+    {
+      "name": "Joana Pires",
+      "comment": "Recebi aqui tambem! Obridado!! ",
+      "likes": 13,
+      "responses": [
+        { "name": "Tati", "comment": "Um amigo me indicou, ainda bem que consegui antes das vagas terminarem." },
+        { "name": "Amanda", "comment": "Tambem fiz, pessoal me ligou e me ajudou a realizar o cadastro !!" }
+      ]
+    }
+  ],
+  "pdf": {
+    "format": "A4",
+    "orientation": "portrait",
+    "border": "20mm",
+    "header": {
+      "height": "10mm",
+      "contents": ""
+    },
+    "footer": {
+      "height": "20mm",
+      "contents": {
+        "first": "",
+        "2": "", 
+        "default": "<span style=\"color: #444;\">{{page}}/{{pages}}</span>", 
+        "last": ""
+      }
+    }
+  }
+}
