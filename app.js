@@ -81,6 +81,7 @@ async function connectToWhatsApp() {
   });
 
   await start(client);
+  
 
   client.ev.on("connection.update", (update) => {
     const { connection } = update;
