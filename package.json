@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "concurrently \"node app.js\" \"gulp\"",
-    "start": "app.js"
+    "start": "node app.js"
   },
   "author": "Aécio Oliveira",
   "license": "ISC",
