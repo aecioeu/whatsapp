@@ -15,7 +15,7 @@
     "url": "git+https://github.com/aecioeu/multi.git"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "github:adiwajshing/baileys",
+    
     "@adiwajshing/baileys-md": "github:adiwajshing/baileys#multi-device",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
