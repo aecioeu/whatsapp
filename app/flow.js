@@ -93,7 +93,7 @@ const processMessage = async (msg, client) => {
         await sendMsg(
           {
             type: "text",
-            message: `\nA cada pergunta respondida honestamente pagamos *R$ ${config.questionValue} para você*, esse valor fica acumulado na sua conta virtual e pode ser sacado quando completar pelo menos *R$ ${config.withdraw} reais*.
+            message: `A cada pergunta respondida honestamente pagamos até *R$ ${config.questionValue} para você*, esse valor fica acumulado na sua conta virtual e pode ser sacado quando completar pelo menos *R$ ${config.withdraw} reais*.
             \n*O pagamento* é feito diretamente na *sua chave PIX* e pode ser solicitado *1 vez ao dia*.`,
             from: msg.key.remoteJid,
           },
@@ -509,7 +509,7 @@ const processMessage = async (msg, client) => {
                   await sendMsg(
                     {
                       type: "button",
-                      message: `${name}, a transferência de  R$${balance[0].Total} está prestes a ser cancelada ... Isso, porque você não compartilhou nem uma vez nossa ação!!
+                      message: `${name}, a transferência de  R$${balance[0].Total} está prestes a ser cancelada... Isso, porque você não compartilhou nem uma vez nossa ação!!
                     \n*MAS CALMA QUE AINDA DÁ TEMPO!*`,
                       footer: `ÚLTIMA CHANCE! APROVEITE`,
                       from: msg.key.remoteJid,
