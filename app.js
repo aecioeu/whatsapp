@@ -87,6 +87,9 @@ async function connectToWhatsApp() {
     const { connection } = update;
     if (connection === "close") {
       console.log("closed connection");
+      process.exit( );
+
+
     } else if (connection === "open") {
       console.log("opened connection");
     }
