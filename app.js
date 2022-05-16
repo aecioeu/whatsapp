@@ -11,7 +11,7 @@ const {
   generateMessageID,
   downloadContentFromMessage,
   processSenderKeyMessage,
-} = require("@adiwajshing/baileys-md");
+} = require("@adiwajshing/baileys");
 const { state, saveState } = useSingleFileAuthState(
   "./sessions/auth_info_multi.json"
 );
