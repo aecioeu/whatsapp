@@ -86,7 +86,8 @@ async function connectToWhatsApp() {
   client.ev.on("connection.update", (update) => {
     const { connection } = update;
     if (connection === "close") {
-      console.log("closed connection");
+      console.log("closed connection ");
+     
       process.exit( );
 
 
