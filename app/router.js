@@ -10,13 +10,7 @@ const {sendMsg} = require("./senderHelper")
 const config = require("../config.json");
 
 
-
-
-
-
-
 const schedule = require("node-schedule");
-
 var got = require("got");
 const sharp = require("sharp");
 
