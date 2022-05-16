@@ -54,14 +54,18 @@ connectToWhatsApp();
 
 
 
-
-
 //start("");
 
 async function start(client) {
   app.listen(3000, async function () {
    
    
+var fs = require('fs');
+
+if (!fs.existsSync('./sessions')){
+    fs.mkdirSync('./sessions', { recursive: true });
+}
+
 
     await init(); // inicia o treino da IA
     console.log("Servidor Iniciado e escutando na porta 3000");
