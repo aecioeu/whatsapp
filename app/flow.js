@@ -53,6 +53,7 @@ const processMessage = async (msg, client) => {
       const currentQuestion = parseFloat(getLead[0].question);
       const name = getLead[0].name.replace(/ .*/, "");
       const conversion_type = getLead[0].conversion_type;
+      
 
       //INFORMAÇÕES SOBRE O PREMIO DO SORTEIO
       //const prizeDate = moment(getPrize[0].prize_end).format("DD-MM-YYYY");
