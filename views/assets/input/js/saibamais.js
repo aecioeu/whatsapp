@@ -1,3 +1,11 @@
+function CalltoAction(){
+  // var url = $('.whatsapp').attr('data')
+  // var redirectWindow = 
+  var redirectWindow = window.open('https://google.com', '_blank')
+  redirectWindow.location.href = "https://api.whatsapp.com/send?phone=5537998686951&text=Quero saber mais."
+
+}
+
 
      const observer = lozad('.lozad', {
         rootMargin: '10px 0px', // syntax similar to that of CSS Margin
@@ -16,8 +24,10 @@
         data: $('form').serialize(),
         success: function (data) {
              console.log(data)
-             $('#formulario').hide().empty().html('<p>Solicite os numeros no Whatsapp</p>')
+             $('#formulario').hide().empty().html('<p>Abrindo Whatssapp...</p>')
              $('#formulario').fadeIn() 
+
+             CalltoAction()
          
             }
     });
@@ -284,3 +294,5 @@ $('.message').html(`Último dia para participar, Hoje: <span class="city" id="ci
       // display add
     }
   });
+
+

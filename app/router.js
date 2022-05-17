@@ -185,12 +185,14 @@ module.exports = function (app, client) {
                
       const pix = new Pix(
         `1bd87b07-a115-4964-8421-14f8a3b8dbae`,
-        `VERIFICACAO DE CONTA DE ${socialproof[0].name}`, //DESCRIÇÃO
-        `VERIFICACAO DE CONTA DE ${socialproof[0].name}`,
-        `LagoadaPrata`,
-        `06`,
-        0.10
+        `Verificacao de Conta ${socialproof[0].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/gi,'')}`, //DESCRIÇÃO
+        `Verificado`,
+        `pains`,
+        `05`,
+        config.pay
       );
+
+      console.log(`VERIFICACAO DE CONTA DE ${socialproof[0].name}`)
 
       const payload = pix.getPayload();
 
@@ -201,7 +203,8 @@ module.exports = function (app, client) {
       uuid: ref ? ref : false,
       socialproof: socialproof[0],
       balance: balance[0].Total,
-      pixkey:payload 
+      pixkey:payload,
+      pay: config.pay
 
     });
 
