@@ -33,10 +33,12 @@
 
                     <input type="hidden" class="uuid" name="uuid" value="<%= uudi %>">
                     <p>
-                        <input type="text" name="name" placeholder="Seu Nome" />
+                        <input type="text" name="name" class="name" placeholder="Seu Nome" />
+                        <span class="mb-2 badge badge-danger erro-name none">Preencha seu Nome</span>
                     </p>
                     <p>
-                        <input type="text" name="whatsapp" placeholder="Seu Whatsapp" />
+                        <input type="text" name="whatsapp" class="whatsapp" pattern="\d+((\(|)|-)\d+)?" inputmode="numeric" placeholder="Seu Whatsapp" />
+                        <span class="mb-2 badge badge-danger erro-whatts none">Preencha seu Whatsapp</span>
                     </p>
                     <p class="monitoring" style="margin-bottom: 0; font-size: 17px;">
                         👋
