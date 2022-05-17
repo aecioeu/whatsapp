@@ -93,7 +93,7 @@ async function connectToWhatsApp() {
       console.log("closed connection ");
      
       
-     // process.exit( );
+      process.exit( );
 
 
     } else if (connection === "open") {
