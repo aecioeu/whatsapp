@@ -147,10 +147,10 @@ module.exports = function (app, client) {
               },
             },
             client
-          );*/
+          );
     
           await db.updateStage(lead[0].user, 12);
-        });
+        });*/
       
     
         /*await sendMsg(
