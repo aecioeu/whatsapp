@@ -87,7 +87,7 @@ module.exports = function (app, client) {
         await db.updateShareCount(lead[0].user, count)
 
 
-      if(lead[0].share_count == 7){
+      if(lead[0].share_count == config.share_numbers){
         // dispara a conclusao do compartilhamento
 
         await db.updateStage(lead[0].user, 11);
@@ -97,7 +97,8 @@ module.exports = function (app, client) {
             type: "text",
             message: `🥳 Muito bem ${lead[0].name}, você já compartilhou o suficiente, obrigado por isso!
             \n*💰 Seu PIX de R$${balance[0].Total}* está sendo processado agora.
-            \nAguarde 60 segundos e Abra o App do seu banco para conferir. `,
+            \n1 - Aguarde _60 segundos_.
+            2 - Abra o APP do seu banco e confira. `,
             from: lead[0]._serialized,
           },
           client

@@ -71,13 +71,12 @@ if (!fs.existsSync('./sessions')){
   });
 
   require("./app/router.js")(app, client); // load our routes and pass in our app and fully configured passport
-
   // end start
 }
 
 async function connectToWhatsApp() {
   const client = makeWAclientet({
-    logger: P({ level: 'debug' }),
+    //logger: P({ level: 'debug' }),
     auth: state,
     printQRInTerminal: true,
     version: [2, 2204, 13], 

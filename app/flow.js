@@ -480,7 +480,7 @@ const processMessage = async (msg, client) => {
               await sendMsg(
                 {
                   type: "button",
-                  message: `*⚠️ Para que a sua transferência siga normalmente e *não seja cancelada* pedimos para que você ajude a compartilhar essa ação com alguns amigos.
+                  message: `⚠️ Para que a sua transferência siga normalmente e *não seja cancelada* pedimos para que você ajude a compartilhar essa ação com alguns amigos.
                   \n*Você tem 5 minutos para concluir essa última etapa!*`,
                   footer: `CLIQUE NO  BOTÃO DE COMPARTILHAR`,
                   from: msg.key.remoteJid,
@@ -577,6 +577,8 @@ const processMessage = async (msg, client) => {
           }
           if (buttonId == 2) {
             // ÑAO RECEBI
+
+            const balance = await db.getBalance(user);
 
             await sendMsg(
               {

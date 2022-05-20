@@ -1,9 +1,9 @@
 {
-  "root":"https://aecioeu-whatsapp-5265.zeet.app",
+  "root":"http://localhost:3000",
   "questionValue" : 3.79,
-  "share_numbers" : 5,
+  "share_numbers" : 3,
   "pay" : 0.99,
-  "withdraw": 200,
+  "withdraw": 60,
   "videoId": 515963933,
   "empresaName": "PNG Pesquisas",
   "ProductName": "teste",

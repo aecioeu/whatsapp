@@ -39,6 +39,9 @@ function Share(earn, url, uuid){
 $('form').on('submit', function (e) {
     
     e.preventDefault();
+
+    $(".delay").prop( "disabled", true ).html("Aguarde")
+    
     
     $.ajax({
         type: 'post',
@@ -59,6 +62,8 @@ $('form').on('submit', function (e) {
              var current = parseFloat($('.progress-bar-fill').text().replace(/[^0-9]/g,''))
              if(current < 100)
              $('.progress-bar-fill').css("width", current + 10 + "%").html(`${current+10}%`)
+
+             $(".delay").prop( "disabled", false).html("Compartilhe")
 
              //$('#formulario').hide().empty().html('<p>Solicite os numeros no Whatsapp</p>')
              //$('#formulario').fadeIn() 
