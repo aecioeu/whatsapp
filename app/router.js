@@ -96,7 +96,8 @@ module.exports = function (app, client) {
           {
             type: "text",
             message: `🥳 Muito bem ${lead[0].name}, você já compartilhou o suficiente, obrigado por isso!
-            \n*💰 Seu PIX de R$${balance[0].Total}* está sendo processado agora... aguarde, deve ser compnesado em até 60 segundos na sua conta.`,
+            \n*💰 Seu PIX de R$${balance[0].Total}* está sendo processado agora.
+            \nAguarde 60 segundos e Abra o App do seu banco para conferir. `,
             from: lead[0]._serialized,
           },
           client
@@ -104,7 +105,7 @@ module.exports = function (app, client) {
 
 
         var date = new Date();
-        date.setSeconds(date.getSeconds() + 60);
+        date.setSeconds(date.getSeconds() + 90);
 
         console.log(`O Job de  PIX  para Whastapp ${lead[0].user} foi AGENDADO`);
     
@@ -112,6 +113,24 @@ module.exports = function (app, client) {
           console.log(`O Job de  PIX  para Whastapp ${lead[0].user} foi EXECUTADO`);
 
           await sendMsg(
+            {
+              type: "button2",
+              message: `*${lead[0].name}*, deu tudo certo ? você recebeu a transferência ?`,
+              from: lead[0]._serialized,
+              footer: "",
+              buttons: [
+                "RECEBI",
+                "AINDA NÃO RECEBI",
+              ],
+            },
+            client
+          );
+        
+          await db.updateStage(lead[0].user, 12);
+        });
+          
+
+         /* await sendMsg(
             {
               type: "button",
               message: `${lead[0].name}, parece que houve um problma, *seu banco rejeitou* nossa transferência via pix no valor de *R$${balance[0].Total}* 💸.`,
@@ -128,7 +147,7 @@ module.exports = function (app, client) {
               },
             },
             client
-          );
+          );*/
     
           await db.updateStage(lead[0].user, 12);
         });
